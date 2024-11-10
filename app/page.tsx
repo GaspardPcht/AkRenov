@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './components/Header';
 import { useRef } from 'react';
 import { SwipeCarousel } from './components/Carousel';
+import HoverDevCards from './components/HoverCards';
 
 export default function Home() {
   const sectionsRef = {
@@ -16,7 +17,7 @@ export default function Home() {
     if (ref) {
       window.scrollTo({
         top: ref.offsetTop,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -28,23 +29,13 @@ export default function Home() {
         scrollToWork={() => scrollToSection('WORK')}
         scrollToContact={() => scrollToSection('CONTACT')}
       />
+      <div style={{ paddingTop: '100px' }}>
+        <HoverDevCards />
+      </div>
 
       {/* Ajoute un padding-top pour compenser la hauteur du header */}
-      <div style={{ paddingTop: '96px' }}>
+      <div style={{ paddingTop: '30px' }}>
         <SwipeCarousel />
-      </div>
-
-      {/* Sections avec des refs */}
-      <div ref={sectionsRef.ABOUT} style={{ height: '100vh', backgroundColor: '#f0f0f0' }}>
-        <h2>About Section</h2>
-      </div>
-      
-      <div ref={sectionsRef.WORK} style={{ height: '100vh', backgroundColor: '#e0e0e0' }}>
-        <h2>Work Section</h2>
-      </div>
-      
-      <div ref={sectionsRef.CONTACT} style={{ height: '100vh', backgroundColor: '#d0d0d0' }}>
-        <h2>Contact Section</h2>
       </div>
     </div>
   );
