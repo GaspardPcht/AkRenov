@@ -21,7 +21,7 @@ export default function Header({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 bg-black backdrop-blur-[2px] h-24 flex items-center justify-between w-full">
+    <header className="fixed top-0 left-0 right-0 z-10 bg-[#323232] backdrop-blur-[2px] h-24 flex items-center justify-between w-full">
       <div
         className="flex items-center justify-start cursor-pointer text-left ml-10"
         onClick={scrollToTop}
@@ -31,7 +31,7 @@ export default function Header({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Image src="/assets/Logo AkRenov.png" alt="Logo AkRenov" width={150} height={150} />
+          <Image src="/assets/logo.png" alt="Logo AkRenov" width={150} height={150} />
         </motion.div>
       </div>
 
@@ -52,7 +52,7 @@ export default function Header({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
-            <span className="flex items-center justify-start font-poppins font-extrabold opacity-50 text-3xl text-[#EAEAEA] hover:opacity-100">
+            <span className="flex items-center justify-start font-poppins font-extrabold opacity-50 text-3xl text-[#D9D9D9] hover:opacity-100">
               {item}
             </span>
           </motion.div>

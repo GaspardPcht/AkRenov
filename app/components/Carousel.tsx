@@ -56,7 +56,7 @@ export const SwipeCarousel = () => {
   };
 
   return (
-    <div className="relative overflow-hidden bg-black py-8">
+    <div className="relative overflow-hidden bg-[#D9D9D9] mt-3">
       <motion.div
         drag="x"
         dragConstraints={{
@@ -67,7 +67,7 @@ export const SwipeCarousel = () => {
           x: dragX,
         }}
         animate={{
-          translateX: `-${imgIndex * 50}%`, // Défilement à 50% de largeur pour chaque image
+          translateX: `-${imgIndex * 100}%`, // Défilement à 50% de largeur pour chaque image
         }}
         transition={SPRING_OPTIONS}
         onDragEnd={onDragEnd}
@@ -98,7 +98,7 @@ const Images = ({ imgIndex }: { imgIndex: number }) => {
               scale: imgIndex <= idx && idx < imgIndex + 2 ? 0.95 : 1, // Échelle de l'image active et suivante
             }}
             transition={SPRING_OPTIONS}
-            className="aspect-video w-[50%] h-[100%] shrink-0 rounded-xl bg-black"
+            className="aspect-video w-[100%] h-[60vh] lg:h-[70vh] shrink-0 rounded-md bg-[#D9D9D9] "
           />
         );
       })}
@@ -140,8 +140,8 @@ const Dots = ({
 const GradientEdges = () => {
   return (
     <>
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-r from-neutral-950/50 to-neutral-950/0" />
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-l from-neutral-950/50 to-neutral-950/0" />
+      <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-[10vw] max-w-[100px] " />
+      <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-[10vw] max-w-[100px]" />
     </>
   );
 };
