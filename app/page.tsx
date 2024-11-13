@@ -32,7 +32,7 @@ export default function Home() {
 
       {/* Main content */}
       <main>
-        <section className="flex justify-center items-center mt-10 md:text-[14px] lg:text-xl pt-[96px]">
+        <section className="flex justify-center items-center mt-10 md:text-[14px] lg:text-xl pt-[96px] md:mb-3 lg:mb-0 ">
           <ContactInfo
             location="Plouescat"
             phone="06 71 11 89 46"
@@ -46,7 +46,7 @@ export default function Home() {
         </section>
 
         {/* Swipe Carousel Section */}
-        <section className="md:mt-10">
+        <section className="flex justify-center ">
           <SwipeCarousel />
         </section>
       </main>
