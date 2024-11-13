@@ -56,7 +56,7 @@ export const SwipeCarousel = () => {
   };
 
   return (
-    <div className="relative overflow-hidden bg-[#D9D9D9] mt-3">
+    <div className="relative overflow-hidden bg-[#EAEAEA] mt-3">
       <motion.div
         drag="x"
         dragConstraints={{
@@ -98,7 +98,7 @@ const Images = ({ imgIndex }: { imgIndex: number }) => {
               scale: imgIndex <= idx && idx < imgIndex + 2 ? 0.95 : 1, // Échelle de l'image active et suivante
             }}
             transition={SPRING_OPTIONS}
-            className="aspect-video w-[100%] h-[60vh] lg:h-[70vh] shrink-0 rounded-md bg-[#D9D9D9] "
+            className="aspect-video w-[100%] h-[60vh] lg:h-[70vh] shrink-0 rounded-md bg-[#EAEAEA] "
           />
         );
       })}

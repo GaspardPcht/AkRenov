@@ -33,25 +33,25 @@ export default function Home() {
 
       {/* Main content */}
       <main>
-        <section className="flex justify-center ml-10 mt-5 md:text-[14px] lg:text-xl pt-[96px]">
+        <section className="flex justify-center items-center mt-5 md:text-[14px] lg:text-xl pt-[96px]">
           {/* First section */}
-          <div className="gap-10 items-center hidden lg:flex md:w-1/2">
+          <div className="justify-center items-center hidden lg:flex md:w-1/2">
             <FaMapMarkerAlt color="black" />
-            <p className="text-black">Plouescat</p>
+            <p className="text-black mr-7 ml-1">Plouescat</p>
             <FaPhoneAlt color="black" />
-            <p className="text-black">06 71 11 89 46</p>
+            <p className="text-black mr-7 ml-1">06 71 11 89 46</p>
             <IoIosMail color="black" />
-            <p className="text-black">contact@akrenov.fr</p>
+            <p className="text-black mr-7 ml-1">contact@akrenov.fr</p>
           </div>
 
           {/* Second section */}
-          <div className="gap-10 items-center hidden lg:flex md:w-1/2">
+          <div className="justify-center items-center hidden lg:flex md:w-1/2">
             <FaMapMarkerAlt color="black" />
-            <p className="text-black">Louannec</p>
+            <p className="text-black mr-7 ml-1">Louannec</p>
             <FaPhoneAlt color="black" />
-            <p className="text-black">06 95 97 13 20​</p>
+            <p className="text-black mr-7 ml-1">06 95 97 13 20​</p>
             <IoIosMail color="black" />
-            <p className="text-black">contact@akrenov.fr</p>
+            <p className="text-black mr-7 ml-1">contact@akrenov.fr</p>
           </div>
         </section>
 
