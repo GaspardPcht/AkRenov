@@ -10,9 +10,9 @@ const imgs = [
 ];
 
 const texts = [
-  "Veranda",
-  "Piscine",
-  "Extension",
+  "Porte & fenêtres",
+  "Charpente & Bardage",
+  "Menuiserie Interieurs et Exterieurs",
   "Cuisine",
   "Salle de bain",
 ];
