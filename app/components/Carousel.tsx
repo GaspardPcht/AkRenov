@@ -2,25 +2,19 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 
 const imgs = [
-  "/assets/piscine.png",
   "/assets/Veranda2.png",
+  "/assets/piscine.png",
   "/assets/extension.png",
   "/assets/cuisine_3.png",
-  "/assets/plafond_4.png",
   "/assets/salle_de_bain_1.png",
 ];
 
 const texts = [
-  "Piscine avant",
-  "Piscine après",
-  "Véranda avant",
-  "Véranda après",
-  "Extension avant",
-  "Extension après",
-  "Cuisine 2",
-  "Cuisine 3",
-  "Plafond 4",
-  "Salle de bain 1",
+  "Veranda",
+  "Piscine",
+  "Extension",
+  "Cuisine",
+  "Salle de bain",
 ];
 
 const ONE_SECOND = 1000;
