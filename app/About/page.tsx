@@ -3,13 +3,13 @@ import ContainerText from '../components/ContainerText';
 
 export default function About() {
   return (
-    <div>
+    <div className="">
       <div className="flex justify-center text-2xl md:text-3xl font-poppins font-bold text-black mb-6">
         <h1>QUI SOMMES-NOUS ?</h1>
       </div>
 
       {/* Image Section */}
-      <div className="flex justify-center lg:justify-normal mb-6 relative lg:left-32 ">
+      <div className="flex justify-center lg:justify-normal mb-6 relative  ">
         <img 
           src="/assets/piscine.png" 
           alt="Piscine rénovée par Akrénov" 
@@ -78,7 +78,7 @@ export default function About() {
           }
         />
       </div>
-      <div className="flex justify-center lg:justify-normal mb-6 relative lg:left-32 ">
+      <div className="flex justify-center lg:justify-normal mb-6 relative  ">
         <img 
           src="/assets/cuisine_3.png" 
           alt="Piscine rénovée par Akrénov" 

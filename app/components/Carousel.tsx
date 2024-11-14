@@ -2,11 +2,11 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 
 const imgs = [
-  "/assets/Veranda2.png",
-  "/assets/piscine.png",
-  "/assets/extension.png",
-  "/assets/cuisine_3.png",
-  "/assets/salle_de_bain_1.png",
+  "/assets/verandaFlou.png",
+  "/assets/piscineFlou.png",
+  "/assets/giteFlou.png",
+  "/assets/cuisineFlou.png",
+  "/assets/toiletteFlou.png",
 ];
 
 const texts = [
@@ -86,9 +86,21 @@ export const SwipeCarousel = () => {
 };
 
 const Images = ({ imgIndex }: { imgIndex: number }) => {
+  // Fonction pour vérifier si l'image dépasse les dimensions souhaitées
+  const getBlurStyle = (imgSrc: string) => {
+    const img = new Image();
+    img.src = imgSrc;
+    // Dès que l'image est chargée, on vérifie ses dimensions
+    if (img.width > 1200 && img.height > 560) {
+      return { filter: "blur(100px)" }; // Applique un flou si l'image est plus grande que 1200x560px
+    }
+    return {};
+  };
+
   return (
     <>
       {imgs.map((imgSrc, idx) => {
+        const blurStyle = getBlurStyle(imgSrc); // Applique le flou si nécessaire
         return (
           <motion.div
             key={idx}
@@ -96,9 +108,10 @@ const Images = ({ imgIndex }: { imgIndex: number }) => {
               backgroundImage: `url(${imgSrc})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
+              ...blurStyle, // Ajout du flou dans le style
             }}
             animate={{
-              scale: imgIndex <= idx && idx < imgIndex + 1 ? 0.95 : 1, // Échelle de l'image active et suivante
+              scale: imgIndex <= idx && idx < imgIndex + 1 ? 1 : 1,
             }}
             transition={SPRING_OPTIONS}
             className="relative aspect-video w-[100%] h-[70vh] lg:h-[70vh] shrink-0 rounded-md bg-[#EAEAEA]"
