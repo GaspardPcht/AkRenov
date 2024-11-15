@@ -39,7 +39,7 @@ export const SwipeCarousel = () => {
         if (prevIndex + 1 >= imgs.length) {
           return 0; // Revenir au début si on est à la fin
         }
-        return prevIndex + 1; // Défilement par 2 images à la fois
+        return prevIndex + 1; // Défilement par une image à la fois
       });
     }, AUTO_DELAY);
 
@@ -50,7 +50,7 @@ export const SwipeCarousel = () => {
   const onDragEnd = () => {
     const x = dragX.get();
 
-    // On vérifie si l'on a assez glissé pour passer à la prochaine paire d'images
+    // Vérifie si l'on a assez glissé pour passer à la prochaine image
     if (x <= -DRAG_BUFFER && imgIndex + 1 < imgs.length) {
       setImgIndex((prevIndex) => prevIndex + 1);
     } else if (x >= DRAG_BUFFER && imgIndex - 1 >= 0) {
@@ -70,7 +70,7 @@ export const SwipeCarousel = () => {
           x: dragX,
         }}
         animate={{
-          translateX: `-${imgIndex * 100}%`, // Défilement à 50% de largeur pour chaque image
+          translateX: `-${imgIndex * 100}%`, // Défilement à 100% de largeur pour chaque image
         }}
         transition={SPRING_OPTIONS}
         onDragEnd={onDragEnd}
@@ -86,44 +86,31 @@ export const SwipeCarousel = () => {
 };
 
 const Images = ({ imgIndex }: { imgIndex: number }) => {
-  // Fonction pour vérifier si l'image dépasse les dimensions souhaitées
-  const getBlurStyle = (imgSrc: string) => {
-    const img = new Image();
-    img.src = imgSrc;
-    // Dès que l'image est chargée, on vérifie ses dimensions
-    if (img.width > 1200 && img.height > 560) {
-      return { filter: "blur(100px)" }; // Applique un flou si l'image est plus grande que 1200x560px
-    }
-    return {};
-  };
-
   return (
     <>
-      {imgs.map((imgSrc, idx) => {
-        const blurStyle = getBlurStyle(imgSrc); // Applique le flou si nécessaire
-        return (
-          <motion.div
-            key={idx}
-            style={{
-              backgroundImage: `url(${imgSrc})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              ...blurStyle, // Ajout du flou dans le style
-            }}
-            animate={{
-              scale: imgIndex <= idx && idx < imgIndex + 1 ? 1 : 1,
-            }}
-            transition={SPRING_OPTIONS}
-            className="relative aspect-video w-[100%] h-[70vh] lg:h-[70vh] shrink-0 rounded-md bg-[#EAEAEA]"
+      {imgs.map((imgSrc, idx) => (
+        <motion.div
+          key={idx}
+          style={{
+            backgroundImage: `url(${imgSrc})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          animate={{
+            scale: imgIndex === idx ? 1 : 0.95, // Ajustement de l'échelle pour l'image active
+          }}
+          transition={SPRING_OPTIONS}
+          className="relative aspect-video w-[100%] h-[70vh] lg:h-[70vh] shrink-0 rounded-md bg-[#EAEAEA]"
+        >
+          {/* Bloc de texte sur l'image */}
+          <div
+            className="absolute bottom-5 left-2 bg-[#323232] text-[#EAEAEA] p-4 rounded-md 
+              w-[60%] sm:w-[50%] md:w-[40%] lg:w-[30%] xl:w-[20%] text-2xl font-poppins font-extrabold"
           >
-            {/* Bloc de texte sur l'image */}
-            <div className="absolute bottom-5 left-2  bg-[#323232] text-[#EAEAEA] p-4 rounded-md 
-                w-[60%] sm:w-[50%] md:w-[40%] lg:w-[30%] xl:w-[20%] text-2xl font-poppins font-extrabold ">
-              <p>{texts[idx]}</p>
-            </div>
-          </motion.div>
-        );
-      })}
+            <p>{texts[idx]}</p>
+          </div>
+        </motion.div>
+      ))}
     </>
   );
 };
@@ -135,11 +122,10 @@ const Dots = ({
   imgIndex: number;
   setImgIndex: Dispatch<SetStateAction<number>>;
 }) => {
-  // Calculer combien de boutons on doit afficher en fonction du nombre d'images
-  const buttonCount = Math.ceil(imgs.length / 1); // Une paire d'images par bouton
+  const buttonCount = imgs.length;
 
   const handleDotClick = (index: number) => {
-    setImgIndex(index * 2); // Calculer l'index du premier élément de la paire
+    setImgIndex(index); // Navigue à l'image correspondante
   };
 
   return (
@@ -148,9 +134,9 @@ const Dots = ({
         return (
           <button
             key={idx}
-            onClick={() => handleDotClick(idx)} // On passe à la paire suivante
+            onClick={() => handleDotClick(idx)}
             className={`h-3 w-3 rounded-full transition-colors ${
-              imgIndex / 1 === idx ? "bg-neutral-50" : "bg-neutral-500"
+              imgIndex === idx ? "bg-neutral-50" : "bg-neutral-500"
             }`}
           />
         );
@@ -162,7 +148,7 @@ const Dots = ({
 const GradientEdges = () => {
   return (
     <>
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-[10vw] max-w-[100px] " />
+      <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-[10vw] max-w-[100px]" />
       <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-[10vw] max-w-[100px]" />
     </>
   );
