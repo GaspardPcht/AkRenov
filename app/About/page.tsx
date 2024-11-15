@@ -4,7 +4,7 @@ import ContainerText from '../components/ContainerText';
 export default function About() {
   return (
     <div className="p-10">
-      <div className="flex justify-center text-2xl md:text-3xl font-poppins font-bold text-black mb-6">
+      <div className="flex justify-center text-2xl md:text-3xl font-poppins font-bold text-black">
         <h1>QUI SOMMES-NOUS ?</h1>
       </div>
 
