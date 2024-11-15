@@ -4,7 +4,7 @@ import Header from './components/Header';
 import { SwipeCarousel } from './components/Carousel';
 import ContactInfo from './components/ContactCards';
 import About from './About/page';
-import { IoIosArrowDropdown } from "react-icons/io";
+import { IoIosArrowDropdown } from 'react-icons/io';
 
 type Section = 'ABOUT' | 'WORK' | 'CONTACT' | null;
 
@@ -63,13 +63,6 @@ export default function Home() {
   return (
     <div>
       <div className="relative min-h-screen">
-        {/* Main Text */}
-        <div className="absolute left-[3vw] md:left-[3vw] lg:left-[2vw] top-[50%] transform -translate-y-1/2 -translate-x-1/2 pl-2">
-          <span className="flex text-[64px] md:text-[96px] opacity-20 font-bold font-khula text-[#EAEAEA] stroke-black stroke-1 rotate-90">
-            GASPARDPCHT
-          </span>
-        </div>
-
         {/* Always Rendered Header */}
         {isClient && (
           <Header
@@ -113,7 +106,7 @@ export default function Home() {
       {/* About Section */}
       <div
         ref={sectionsRef.ABOUT}
-        className={visibleSection === 'ABOUT' ? 'bg-gray-100' : ''}
+        className={visibleSection === 'ABOUT' ? 'bg-[#EAEAEA]' : 'bg-[#EAEAEA]'}
       >
         <About />
       </div>
@@ -130,3 +123,5 @@ export default function Home() {
     </div>
   );
 }
+
+

@@ -10,7 +10,7 @@ const ContainerText: React.FC<ButtonHoverProps> = ({ text }) => {
       className="
         p-3 
         bg-[#323232] 
-        text-2xl 
+        text-1xl
         font-poppins 
         font-light 
         text-white 

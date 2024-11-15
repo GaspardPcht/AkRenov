@@ -50,7 +50,7 @@ export default function Header({
       </div>
 
       {/* Desktop Navigation Links */}
-      <div className="hidden lg:flex gap-3 lg:gap-10 items-center flex-1 font-poppins justify-end lg:mr-10 md:mr-4">
+      <div className="hidden lg:flex gap-3 lg:gap-10 items-center flex-1 font-roboto  justify-end lg:mr-10 md:mr-4">
         {["QUI SOMMES NOUS ?", "NOS PRESTATIONS", "PORTFOLIO", "CONTACT"].map(
           (item, index) => (
             <motion.div
@@ -67,7 +67,7 @@ export default function Header({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <span className="text-lg lg:text-2xl font-extrabold opacity-50 text-[#D9D9D9] hover:opacity-100">
+              <span className="text-lg lg:text-2xl font-extralight opacity-50 text-[#D9D9D9] hover:opacity-100">
                 {item}
               </span>
             </motion.div>

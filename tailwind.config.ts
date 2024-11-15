@@ -13,7 +13,7 @@ export default {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        roboto: ['Roboto', 'sans-serif'], // Ajout de la police Roboto
       },
     },
   },
