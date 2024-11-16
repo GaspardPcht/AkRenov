@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -7,12 +6,14 @@ interface HeaderProps {
   readonly scrollToAbout: () => void;
   readonly scrollToWork: () => void;
   readonly scrollToContact: () => void;
+  readonly className?: string; // Ajouter className comme propriété optionnelle
 }
 
 export default function Header({
   scrollToAbout,
   scrollToWork,
   scrollToContact,
+  className // Assurer que className est reçu en tant que prop
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -28,7 +29,7 @@ export default function Header({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4">
+    <header className={`fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4 ${className}`}>
       <div
         className="flex items-center cursor-pointer text-left ml-4"
         onClick={scrollToTop}

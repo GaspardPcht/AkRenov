@@ -104,8 +104,8 @@ const Images = ({ imgIndex }: { imgIndex: number }) => {
         >
           {/* Bloc de texte sur l'image */}
           <div
-            className="absolute bottom-5 left-2 bg-[#323232] text-[#EAEAEA] p-4 rounded-md 
-              w-[60%] sm:w-[50%] md:w-[40%] lg:w-[30%] xl:w-[20%] text-2xl font-poppins font-extrabold"
+            className="absolute bottom-10 left-5 bg-[#323232] text-[#EAEAEA] p-4 rounded-md 
+              w-[60%] sm:w-[50%] md:w-[40%] lg:w-[50%] xl:w-[20%] text-3xl font-roboto font-extralight"
           >
             <p>{texts[idx]}</p>
           </div>

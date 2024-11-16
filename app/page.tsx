@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React, { useRef, useState, useEffect } from 'react';
 import Header from './components/Header';
 import { SwipeCarousel } from './components/Carousel';
@@ -17,6 +17,8 @@ export default function Home() {
 
   const [visibleSection, setVisibleSection] = useState<Section>(null);
   const [isClient, setIsClient] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true); // Etat pour gérer la visibilité du header
+  const [lastScrollY, setLastScrollY] = useState(0); // Pour suivre la dernière position de défilement
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -38,42 +40,53 @@ export default function Home() {
     if (!isClient) return;
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 4;
+      const scrollPosition = window.scrollY;
 
+      // Cache le header lorsque l'utilisateur descend
+      if (scrollPosition > 50 && scrollPosition > lastScrollY) {
+        setIsHeaderVisible(false);
+      } else if (scrollPosition < lastScrollY) {
+        setIsHeaderVisible(true); // Réaffiche le header lors du défilement vers le haut
+      }
+
+      // Détection de la section visible
+      const visiblePosition = window.scrollY + window.innerHeight / 4;
       let currentSection: Section = null;
       Object.entries(sectionsRef).forEach(([key, ref]) => {
         if (
           ref.current &&
-          ref.current.offsetTop <= scrollPosition &&
-          ref.current.offsetTop + ref.current.offsetHeight > scrollPosition
+          ref.current.offsetTop <= visiblePosition &&
+          ref.current.offsetTop + ref.current.offsetHeight > visiblePosition
         ) {
           currentSection = key as Section;
         }
       });
 
       setVisibleSection(currentSection);
+      setLastScrollY(scrollPosition); // Mise à jour de la dernière position de défilement
     };
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Appel initial pour définir la section visible
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isClient]);
+  }, [isClient, lastScrollY]); // Ajout de lastScrollY comme dépendance
 
   return (
     <div>
-      <div className="relative min-h-screen">
-        {/* Always Rendered Header */}
+      <div className="relative h-screen">
+        {/* Header qui disparaît avec transition */}
         {isClient && (
           <Header
             scrollToAbout={() => scrollToSection('ABOUT')}
             scrollToWork={() => scrollToSection('WORK')}
             scrollToContact={() => scrollToSection('CONTACT')}
+            className={`transition-all duration-500 ${isHeaderVisible ? 'transform translate-y-0 opacity-100' : 'transform translate-y-[-100%] opacity-0'}`}
           />
         )}
 
-        {/* Main Content */}
-        <main className="flex justify-center items-center mt-10 md:text-[14px] lg:text-xl pt-[96px] md:mb-3 lg:mb-0">
+        {/* Corps du contenu */}
+        <main className="flex justify-center items-center mt-10 md:text-[14px] lg:text-xl pt-24 md:mb-3 lg:mb-0">
           <ContactInfo
             location="Plouescat"
             phone="06 71 11 89 46"
@@ -86,7 +99,7 @@ export default function Home() {
           />
         </main>
 
-        {/* Swipe Carousel Section */}
+        {/* Carousel Section */}
         <section className="flex justify-center mb-10">
           <SwipeCarousel />
         </section>
@@ -103,25 +116,13 @@ export default function Home() {
         </button>
       </div>
 
-      {/* About Section */}
+      {/* Sections */}
       <div
         ref={sectionsRef.ABOUT}
         className={visibleSection === 'ABOUT' ? 'bg-[#EAEAEA]' : 'bg-[#EAEAEA]'}
       >
         <About />
       </div>
-
-      {/* Work Section */}
-      {/* <div ref={sectionsRef.WORK} className="md:mt-0">
-        <Work />
-      </div> */}
-
-      {/* Contact Section */}
-      {/* <div ref={sectionsRef.CONTACT}>
-        <Contact />
-      </div> */}
     </div>
   );
 }
-
-
