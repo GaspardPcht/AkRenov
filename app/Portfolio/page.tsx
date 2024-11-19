@@ -1,4 +1,5 @@
 import React from 'react';
+import { CarouselBeforeAfter } from '../components/CarouselBeforeAfter';
 
 const Portfolio = () => {
   return (
@@ -9,6 +10,7 @@ const Portfolio = () => {
         PORTFOLIO
       </h1>
     </div>
+<CarouselBeforeAfter/>
     </div>
   );
 };
