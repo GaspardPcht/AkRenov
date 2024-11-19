@@ -62,22 +62,22 @@ export default function About() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center">
       {/* Header */}
-      <div className="flex justify-center w-full  py-4">
-        <h1 className="text-2xl md:text-3xl mt-32 font-bold text-black">
+      <div className="flex justify-center w-full py-4">
+        <h1 className="text-2xl md:text-3xl md:mt-32 font-bold text-black">
           QUI SOMMES-NOUS ?
         </h1>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col items-center justify-center">
+      <div className="flex-1 flex flex-col items-center justify-center ">
         {/* Numbers */}
-        <div className="absolute left-[14vw] top-[50%] transform -translate-y-1/2 -translate-x-1/2 pl-2">
-          <div className="flex flex-col text-[64px] md:text-[96px] font-medium font-roboto  stroke-black stroke-1 mr-40">
+        <div className="flex flex-col md:absolute md:left-[14vw] top-[58%] justify-center md:transform md:-translate-y-[50%] md:-translate-x-[50%] md:pl-2 md:mr-40">
+          <div className="flex sm:flex-row md:flex-col justify-center gap-4 text-4xl md:text-[64px] lg:text-[96px] font-medium font-roboto stroke-black stroke-1 md:gap-10 ">
             {[1, 2, 3].map((number) => (
               <button
                 key={number}
                 onClick={() => handleNumberClick(number)}
-                className={`cursor-pointer hover:text-[#FCD807]  ${
+                className={`cursor-pointer hover:text-[#FCD807] ${
                   selectedNumber === number
                     ? 'text-[#FCD807] opacity-100'
                     : 'text-[#323232]'
@@ -90,7 +90,7 @@ export default function About() {
         </div>
 
         {/* Rendered Content */}
-        <div className="flex justify-center  ">
+        <div className="mt-6 md:mt-0 md:w-[60%] lg:w-full flex justify-center">
           {renderContainerText()}
         </div>
       </div>
