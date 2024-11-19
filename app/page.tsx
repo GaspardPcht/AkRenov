@@ -5,13 +5,14 @@ import { SwipeCarousel } from './components/Carousel';
 import ContactInfo from './components/ContactCards';
 import About from './About/page';
 import { IoIosArrowDropdown } from 'react-icons/io';
+import Portfolio from './Portfolio/page';
 
-type Section = 'ABOUT' | 'WORK' | 'CONTACT' | null;
+type Section = 'QUI SOMMES NOUS ?' | 'PORTFOLIO' | 'CONTACT' | null;
 
 export default function Home() {
   const sectionsRef = {
-    ABOUT: useRef<HTMLDivElement>(null),
-    WORK: useRef<HTMLDivElement>(null),
+    QUISOMMESNOUS: useRef<HTMLDivElement>(null),
+    PORTFOLIO: useRef<HTMLDivElement>(null),
     CONTACT: useRef<HTMLDivElement>(null),
   };
 
@@ -78,10 +79,11 @@ export default function Home() {
         {/* Header qui disparaît avec transition */}
         {isClient && (
           <Header
-            scrollToAbout={() => scrollToSection('ABOUT')}
-            scrollToWork={() => scrollToSection('WORK')}
+            scrollToAbout={() => scrollToSection('QUISOMMESNOUS')}
+            scrollToWork={() => scrollToSection('PORTFOLIO')}
             scrollToContact={() => scrollToSection('CONTACT')}
-            className={`transition-all duration-500 ${isHeaderVisible ? 'transform translate-y-0 opacity-100' : 'transform translate-y-[-100%] opacity-0'}`}
+            // Applique la classe conditionnelle en fonction de isHeaderVisible
+            className={isHeaderVisible ? 'header-visible' : 'header-hidden'}
           />
         )}
 
@@ -106,7 +108,7 @@ export default function Home() {
 
         {/* Scroll to About Button */}
         <button
-          onClick={() => scrollToSection('ABOUT')}
+          onClick={() => scrollToSection('QUISOMMESNOUS')}
           className="flex flex-col justify-center items-center absolute bottom-[5vh] right-[45%] md:right-[50%] transform -translate-x-1/2 cursor-pointer animate-bounce bg-transparent border-none hover:bg-transparent text-[#323232] md:hidden"
           aria-label="Scroll to About section"
         >
@@ -118,10 +120,16 @@ export default function Home() {
 
       {/* Sections */}
       <div
-        ref={sectionsRef.ABOUT}
-        className={visibleSection === 'ABOUT' ? 'bg-[#EAEAEA]' : 'bg-[#EAEAEA]'}
+        ref={sectionsRef.QUISOMMESNOUS}
+        className={visibleSection === 'QUI SOMMES NOUS ?' ? 'bg-[#EAEAEA]' : 'bg-[#EAEAEA]'}
       >
         <About />
+      </div>
+      <div
+        ref={sectionsRef.PORTFOLIO}
+        className={visibleSection === 'PORTFOLIO' ? 'bg-[#EAEAEA]' : 'bg-[#EAEAEA]'}
+      >
+        <Portfolio />
       </div>
     </div>
   );

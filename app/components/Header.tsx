@@ -1,3 +1,5 @@
+
+
 import { motion } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react'; // Import useCallback
 import { IoMdClose } from 'react-icons/io';
@@ -7,12 +9,14 @@ interface HeaderProps {
   scrollToAbout: () => void;
   scrollToWork: () => void;
   scrollToContact: () => void;
+  className : string
 }
 
 export default function Header({
   scrollToAbout,
   scrollToWork,
   scrollToContact,
+  className
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
@@ -52,9 +56,9 @@ export default function Header({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4 transition-all duration-300 ${
-        showHeader ? 'opacity-100' : '-top-24 opacity-0'
-      }`}
+    className={`fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4 transition-all duration-300 ${
+      showHeader ? 'opacity-100' : '-top-24 opacity-0'
+    } ${className}`} 
     >
       <div
         className="flex items-center cursor-pointer text-left ml-4"
@@ -87,7 +91,7 @@ export default function Header({
 
       {/* Desktop Navigation Links */}
       <div className="hidden lg:flex gap-3 lg:gap-10 items-center flex-1 font-poppins justify-end lg:mr-10 md:mr-4">
-        {['QUI SOMMES NOUS ?', 'NOS PRESTATIONS', 'PORTFOLIO', 'CONTACT'].map(
+        {['QUI SOMMES NOUS ?', 'PORTFOLIO', 'NOS PRESTATIONS', 'CONTACT'].map(
           (item, index) => (
             <motion.div
               key={item}
@@ -95,7 +99,7 @@ export default function Header({
               onClick={
                 item === 'QUI SOMMES NOUS ?'
                   ? scrollToAbout
-                  : item === 'NOS PRESTATIONS'
+                  : item === 'PORTFOLIO'
                   ? scrollToWork
                   : scrollToContact
               }
@@ -123,8 +127,8 @@ export default function Header({
             {/* Liens du menu */}
             {[
               'QUI SOMMES NOUS ?',
-              'NOS PRESTATIONS',
               'PORTFOLIO',
+              'NOS PRESTATIONS',
               'CONTACT',
             ].map((item, index) => (
               <motion.div
@@ -134,7 +138,7 @@ export default function Header({
                   toggleMenu();
                   if (item === 'QUI SOMMES NOUS ?') {
                     scrollToAbout();
-                  } else if (item === 'NOS PRESTATIONS') {
+                  } else if (item === 'PORTFOLIO') {
                     scrollToWork();
                   } else {
                     scrollToContact();
