@@ -40,7 +40,10 @@ export const CarouselBeforeAfter = () => {
         className="flex flex-row cursor-grab items-center"
       >
         {imgPairs.map((pair, idx) => (
-          <div key={idx} className="flex flex-col lg:flex-row w-full shrink-0 gap-4"> {/* Ajout du gap ici */}
+          <div
+            key={idx}
+            className="flex flex-col lg:flex-row w-full shrink-0 gap-4 justify-center items-center"
+          >
             {pair.map((imgSrc, imgIdx) => (
               <motion.div
                 key={imgIdx}
@@ -54,7 +57,7 @@ export const CarouselBeforeAfter = () => {
                   opacity: 1,
                 }}
                 transition={SPRING_OPTIONS}
-                className="relative w-full lg:w-[50%] lg:h-[70vh] h-[40vh] shrink-0 rounded-md" 
+                className="relative w-[80%] lg:w-[45%] lg:h-[70vh] h-[40vh] shrink-0 rounded-md"
               />
             ))}
           </div>
@@ -66,13 +69,13 @@ export const CarouselBeforeAfter = () => {
         onClick={handlePrev}
         className="absolute left-0 lg:top-1/2 top-[41vh] -translate-y-1/2 text-black hover:text-[#FCD807] transition"
       >
-        <FaArrowAltCircleLeft size={40} />
+        <FaArrowAltCircleLeft size={35} />
       </button>
       <button
         onClick={handleNext}
         className="absolute right-0 top-[41vh] lg:top-1/2 -translate-y-1/2 text-black hover:text-[#FCD807] transition"
       >
-        <FaArrowAltCircleRight size={40} />
+        <FaArrowAltCircleRight size={35} />
       </button>
 
       <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
