@@ -1,3 +1,5 @@
+import Formulaire from "../components/ContactForm";
+
 export default function Contact(){
   return(
     <div className="relative min-h-screen flex flex-col items-center justify-center">
@@ -7,6 +9,7 @@ export default function Contact(){
       CONTACT
     </h1>
   </div>
+  <Formulaire/>
   </div>
   )
   }

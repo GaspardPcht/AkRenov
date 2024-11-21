@@ -37,6 +37,11 @@ export default function Prestation() {
           text="Exterieur"
         />
       </div>
+      <div className="flex justify-center w-[80%] ">
+      <p className="text-lg mt-6  md:text-2xl font-roboto font-light text-black">
+      Pour tout autre demande n’hesitez pas à nous contacter !
+        </p>
+      </div>
     </div>
   );
 }
