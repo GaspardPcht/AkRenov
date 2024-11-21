@@ -1,5 +1,3 @@
-
-
 import { motion } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react'; // Import useCallback
 import { IoMdClose } from 'react-icons/io';
@@ -8,15 +6,17 @@ import Image from 'next/image';
 interface HeaderProps {
   scrollToAbout: () => void;
   scrollToWork: () => void;
+  scrollToPresta: () => void;
   scrollToContact: () => void;
-  className : string
+  className: string;
 }
 
 export default function Header({
   scrollToAbout,
   scrollToWork,
+  scrollToPresta,
   scrollToContact,
-  className
+  className,
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
@@ -56,9 +56,9 @@ export default function Header({
 
   return (
     <header
-    className={`fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4 transition-all duration-300 ${
-      showHeader ? 'opacity-100' : '-top-24 opacity-0'
-    } ${className}`} 
+      className={`fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4 transition-all duration-300 ${
+        showHeader ? 'opacity-100' : '-top-24 opacity-0'
+      } ${className}`}
     >
       <div
         className="flex items-center cursor-pointer text-left ml-4"
@@ -70,14 +70,13 @@ export default function Header({
           transition={{ duration: 0.5 }}
         >
           <div className="text-white font-bold text-xl">
-         
-<Image 
-  src="/assets/logo.png" 
-  alt="logo Akrenov"
-  width={100} // specify the width of the image
-  height={100}
-  className="w-24 h-auto"
-/>
+            <Image
+              src="/assets/logo.png"
+              alt="logo Akrenov"
+              width={100} // specify the width of the image
+              height={100}
+              className="w-24 h-auto"
+            />
           </div>
         </motion.div>
       </div>
@@ -94,23 +93,25 @@ export default function Header({
         {['QUI SOMMES NOUS ?', 'PORTFOLIO', 'NOS PRESTATIONS', 'CONTACT'].map(
           (item, index) => (
             <motion.div
-              key={item}
-              className="relative cursor-pointer w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#FCD807] after:w-full after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-300 after:origin-left"
-              onClick={
-                item === 'QUI SOMMES NOUS ?'
-                  ? scrollToAbout
-                  : item === 'PORTFOLIO'
-                  ? scrollToWork
-                  : scrollToContact
-              }
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              <span className="text-lg lg:text-2xl font-extralight opacity-50 text-[#D9D9D9] hover:opacity-100">
-                {item}
-              </span>
-            </motion.div>
+            key={item}
+            className="relative cursor-pointer w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-[#FCD807] after:w-full after:scale-x-0 hover:after:scale-x-100 after:transition after:duration-300 after:origin-left"
+            onClick={
+              item === 'QUI SOMMES NOUS ?'
+                ? scrollToAbout
+                : item === 'PORTFOLIO'
+                ? scrollToWork
+                : item === 'NOS PRESTATIONS'
+                ? scrollToPresta
+                : scrollToContact
+            }
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+          >
+            <span className="text-lg lg:text-2xl font-extralight opacity-50 text-[#D9D9D9] hover:opacity-100">
+              {item}
+            </span>
+          </motion.div>
           )
         )}
       </div>
@@ -140,6 +141,8 @@ export default function Header({
                     scrollToAbout();
                   } else if (item === 'PORTFOLIO') {
                     scrollToWork();
+                  } else if (item === 'NOS PRESTATIONS') {
+                    scrollToPresta();
                   } else {
                     scrollToContact();
                   }
@@ -153,7 +156,6 @@ export default function Header({
             ))}
           </motion.div>
 
-          {/* Bouton de fermeture (fixe, pas affecté par l'animation) */}
           <div
             onClick={toggleMenu}
             className="absolute top-4 right-4 text-3xl text-[#EAEAEA] focus:outline-none"

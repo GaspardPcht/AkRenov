@@ -6,13 +6,16 @@ import ContactInfo from './components/ContactCards';
 import About from './About/page';
 import { IoIosArrowDropdown } from 'react-icons/io';
 import Portfolio from './Portfolio/page';
+import Prestation from './Prestations/page';
+import Contact from './Contact/page';
 
-type Section = 'QUI SOMMES NOUS ?' | 'PORTFOLIO' | 'CONTACT' | null;
+type Section = 'QUI SOMMES NOUS ?' | 'PORTFOLIO' | 'PRESTATIONS' | 'CONTACT' | null;
 
 export default function Home() {
   const sectionsRef = {
     QUISOMMESNOUS: useRef<HTMLDivElement>(null),
     PORTFOLIO: useRef<HTMLDivElement>(null),
+    PRESTATIONS: useRef<HTMLDivElement>(null),
     CONTACT: useRef<HTMLDivElement>(null),
   };
 
@@ -81,6 +84,7 @@ export default function Home() {
           <Header
             scrollToAbout={() => scrollToSection('QUISOMMESNOUS')}
             scrollToWork={() => scrollToSection('PORTFOLIO')}
+            scrollToPresta={() => scrollToSection('PRESTATIONS')}
             scrollToContact={() => scrollToSection('CONTACT')}
             // Applique la classe conditionnelle en fonction de isHeaderVisible
             className={isHeaderVisible ? 'header-visible' : 'header-hidden'}
@@ -130,6 +134,18 @@ export default function Home() {
         className={visibleSection === 'PORTFOLIO' ? 'bg-[#EAEAEA]' : 'bg-[#EAEAEA]'}
       >
         <Portfolio />
+      </div>
+      <div
+        ref={sectionsRef.PRESTATIONS}
+        className={visibleSection === 'PRESTATIONS' ? 'bg-[#EAEAEA]' : 'bg-[#EAEAEA]'}
+      >
+        <Prestation />
+      </div>
+      <div
+        ref={sectionsRef.CONTACT}
+        className={visibleSection === 'CONTACT' ? 'bg-[#EAEAEA]' : 'bg-[#EAEAEA]'}
+      >
+        <Contact />
       </div>
     </div>
   );
