@@ -68,16 +68,16 @@ const Formulaire: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+    <form onSubmit={handleSubmit} className="w-[80%] lg:w-[50%] mx-auto p-6 bg-[#323232] rounded-lg shadow-md">
       {/* Liste déroulante pour choisir l'agence */}
       <div className="mb-4">
-        <label htmlFor="agence" className="block text-sm font-medium text-gray-700">Agence</label>
+        <label htmlFor="agence" className="block text-sm font-medium text-[#EAEAEA]">Agence</label>
         <select
           id="agence"
           name="agence"
           value={formData.agence}
           onChange={handleChange}
-          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FCD807]"
           required
         >
           <option value="Plouescat">Plouescat</option>
@@ -87,83 +87,83 @@ const Formulaire: React.FC = () => {
 
       {/* Champ email */}
       <div className="mb-4">
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+        <label htmlFor="email" className="block text-sm font-medium text-[#EAEAEA]">Email</label>
         <input
           type="email"
           id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FCD807]"
           required
         />
       </div>
 
       {/* Champ nom */}
       <div className="mb-4">
-        <label htmlFor="nom" className="block text-sm font-medium text-gray-700">Nom</label>
+        <label htmlFor="nom" className="block text-sm font-medium text-[#EAEAEA]">Nom</label>
         <input
           type="text"
           id="nom"
           name="nom"
           value={formData.nom}
           onChange={handleChange}
-          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FCD807]"
           required
         />
       </div>
 
       {/* Champ prénom */}
       <div className="mb-4">
-        <label htmlFor="prenom" className="block text-sm font-medium text-gray-700">Prénom</label>
+        <label htmlFor="prenom" className="block text-sm font-medium text-[#EAEAEA]">Prénom</label>
         <input
           type="text"
           id="prenom"
           name="prenom"
           value={formData.prenom}
           onChange={handleChange}
-          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FCD807]"
           required
         />
       </div>
 
       {/* Champ numéro de téléphone */}
       <div className="mb-4">
-        <label htmlFor="numero" className="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
+        <label htmlFor="numero" className="block text-sm font-medium text-[#EAEAEA]">Numéro de téléphone</label>
         <input
           type="tel"
           id="numero"
           name="numero"
           value={formData.numero}
           onChange={handleChange}
-          className=" text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className=" text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FCD807]"
           required
         />
       </div>
 
       {/* Champ ville */}
       <div className="mb-4">
-        <label htmlFor="ville" className="block text-sm font-medium text-gray-700">Ville</label>
+        <label htmlFor="ville" className="block text-sm font-medium text-[#EAEAEA]">Ville</label>
         <input
           type="text"
           id="ville"
           name="ville"
           value={formData.ville}
           onChange={handleChange}
-          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FCD807]"
           required
         />
       </div>
 
       {/* Champ message */}
       <div className="mb-4">
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+        <label htmlFor="message" className="block text-sm font-medium text-[#EAEAEA]">Message</label>
         <textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="text-black mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FCD807]"
           required
         ></textarea>
       </div>
@@ -171,7 +171,7 @@ const Formulaire: React.FC = () => {
       {/* Bouton de soumission */}
       <button
         type="submit"
-        className="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="mt-4 w-full bg-[#323232] border text-white py-2 rounded-md hover:bg-[#FCD807] focus:outline-none focus:ring-2 focus:ring-blue-500"
         disabled={isLoading}
       >
         {isLoading ? 'Envoi en cours...' : 'Envoyer'}
