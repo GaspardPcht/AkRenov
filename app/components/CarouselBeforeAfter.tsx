@@ -6,7 +6,7 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 const imgPairs = [
   ['/assets/extension_after.png', '/assets/extension.png'],
   ['/assets/piscine_after.png', '/assets/piscineFlou.png'],
-  ['/assets/veranda_after.png', '/assets/veranda2.png'],
+  ['/assets/veranda_after.png', '/assets/Veranda2.png'],
 ];
 
 const SPRING_OPTIONS = {

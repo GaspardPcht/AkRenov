@@ -12,7 +12,7 @@ export default function Contact() {
 
         <Formulaire />
 
-      <div className='text-black mt-1'>
+      <div className='text-black'>
         <p>© 2024 AkRenov. Tous droits réservés.</p>
       </div>
     </div>
