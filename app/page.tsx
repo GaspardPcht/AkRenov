@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Header from './components/Header';
 import { SwipeCarousel } from './components/Carousel';
 import ContactInfo from './components/ContactCards';
@@ -24,7 +24,7 @@ export default function Home() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true); // Etat pour gérer la visibilité du header
   const [lastScrollY, setLastScrollY] = useState(0); // Pour suivre la dernière position de défilement
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     // Vérifier si nous sommes côté client
     setIsClient(true);
   }, []); // Cette utilisation se déclenche uniquement après le premier rendu côté client
