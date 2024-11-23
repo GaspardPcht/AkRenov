@@ -25,6 +25,12 @@ const Formulaire: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Mapping des agences aux adresses e-mail
+  const agencyEmails: Record<FormData['agence'], string> = {
+    Plouescat: 'gaspardpauchet@gmail.com', // Remplace avec l'adresse e-mail de Plouescat
+    Louannec: 'navislou@gmail.com',  // Remplace avec l'adresse e-mail de Louannec
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -38,9 +44,12 @@ const Formulaire: React.FC = () => {
     setIsLoading(true);
     setError(null);
 
+    // Récupérer l'e-mail correspondant à l'agence sélectionnée
+    const agencyEmail = agencyEmails[formData.agence];
+
     try {
       const emailResponse = await emailjs.send(
-        'service_e6r5l34', // Remplace avec ton Service ID EmailJS
+        'service_az55mwb', // Remplace avec ton Service ID EmailJS
         'template_txqz3zn', // Remplace avec ton Template ID EmailJS
         {
           email: formData.email,
@@ -49,7 +58,7 @@ const Formulaire: React.FC = () => {
           numero: formData.numero,
           ville: formData.ville,
           message: formData.message,
-          agence: formData.agence,
+          to_email: agencyEmail, // Passe l'adresse e-mail de l'agence ici
         },
         'a04RyuWoXUIMeDNPc' // Remplace avec ta clé publique EmailJS
       );
