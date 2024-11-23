@@ -1,3 +1,4 @@
+'use client'
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
