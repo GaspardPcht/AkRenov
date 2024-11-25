@@ -21,6 +21,7 @@ export default function Header({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -35,29 +36,41 @@ export default function Header({
 
   // Use useCallback to memoize the handleScroll function
   const handleScroll = useCallback(() => {
-    if (window.scrollY > lastScrollY) {
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+      return; // Ignorer le premier scroll lors du chargement initial
+    }
+
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY === 0) {
+      // Toujours afficher le header en haut de la page
+      setShowHeader(true);
+    } else if (currentScrollY > lastScrollY) {
       // Scrolling down
       setShowHeader(false);
     } else {
       // Scrolling up
       setShowHeader(true);
     }
-    setLastScrollY(window.scrollY);
-  }, [lastScrollY]); // Add lastScrollY as a dependency
+
+    setLastScrollY(currentScrollY);
+  }, [lastScrollY, isInitialLoad]);
 
   useEffect(() => {
+    setLastScrollY(window.scrollY); // Définir la valeur initiale avec la position de défilement actuelle
     window.addEventListener('scroll', handleScroll);
 
     // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll]); // Add handleScroll as a dependency
+  }, [handleScroll]);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4 transition-all duration-300 ${
-        showHeader ? 'opacity-100' : '-top-24 opacity-0'
+        showHeader ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-full'
       } ${className}`}
     >
       <div
