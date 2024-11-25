@@ -70,28 +70,26 @@ export default function About() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col items-center justify-center ">
+      <div className="flex-1 flex flex-col items-center justify-center md:items-center lg:flex-row lg:justify-center lg:items-center gap-8 w-full px-4">
         {/* Numbers */}
-        <div className="flex flex-col md:absolute md:left-[14vw] top-[58%] justify-center md:transform md:-translate-y-[50%] md:-translate-x-[50%] md:pl-2 md:mr-40">
-          <div className="flex sm:flex-row md:flex-col justify-center gap-4 text-4xl md:text-[64px] lg:text-[96px] font-medium font-roboto stroke-black stroke-1 md:gap-10 ">
-            {[1, 2, 3].map((number) => (
-              <button
-                key={number}
-                onClick={() => handleNumberClick(number)}
-                className={`cursor-pointer hover:text-[#FCD807] ${
-                  selectedNumber === number
-                    ? 'text-[#FCD807] opacity-100'
-                    : 'text-[#323232]'
-                }`}
-              >
-                {number}
-              </button>
-            ))}
-          </div>
+        <div className="flex flex-row md:flex-col lg:flex-col justify-center gap-4 lg:gap-10 text-4xl md:text-[64px] lg:text-[96px] font-medium font-roboto stroke-black stroke-1 ">
+          {[1, 2, 3].map((number) => (
+            <button
+              key={number}
+              onClick={() => handleNumberClick(number)}
+              className={`cursor-pointer hover:text-[#FCD807] ${
+                selectedNumber === number
+                  ? 'text-[#FCD807] opacity-100'
+                  : 'text-[#323232]'
+              }`}
+            >
+              {number}
+            </button>
+          ))}
         </div>
 
         {/* Rendered Content */}
-        <div className="mt-6 md:mt-0 md:w-[60%] lg:w-full flex justify-center">
+        <div className="mt-6 md:mt-0 w-full lg:w-[70%] flex justify-center items-center">
           {renderContainerText()}
         </div>
       </div>

@@ -8,7 +8,7 @@ interface ContainerTextProps {
 
 const ContainerText: React.FC<ContainerTextProps> = ({ text, title, children }) => {
   return (
-    <div className="p-4 bg-[#323232] font-roboto w-[90%] lg:w-[60%] rounded-lg">
+    <div className="p-4 bg-[#323232] font-roboto w-[90%] lg:w-[80%] rounded-lg">
       <h2 className="text-4xl font-roboto font-semibold text-[#EAEAEA] text-left">
         {title}
       </h2>
