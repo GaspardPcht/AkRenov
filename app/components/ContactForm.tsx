@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
 interface FormData {
@@ -20,7 +20,7 @@ const Formulaire: React.FC = () => {
     numero: '',
     ville: '',
     message: '',
-    agence: 'Plouescat',
+    agence: 'Plouescat', // Valeur par défaut statique
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -76,6 +76,10 @@ const Formulaire: React.FC = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    // Effect to ensure anything involving the `window` object is only run client-side
+  }, []);
 
   return (
     <form onSubmit={handleSubmit} className="w-[80%] lg:w-[50%] mx-auto p-6 bg-[#323232] rounded-lg shadow-md">
