@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import 'normalize.css';
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AkRenov - Transformation d&#39;Espaces et Rénovation",
-  description: "AkRenov, entreprise de rénovation spécialisée dans la transformation d&#39;espaces. Découvrez nos services de rénovation de qualité pour améliorer votre espace de vie.",
-  keywords: "rénovation, transformation d&#39;espaces, rénovation intérieure, rénovation extérieure, design d&#39;intérieur, travaux de rénovation, rénovation de maison, AkRenov, aménagement, amélioration de maison, rénovation énergétique, modernisation d&#39;intérieur",
+  title: "AkRenov - Transformation d'Espaces et Rénovation",
+  description: "AkRenov, entreprise de rénovation spécialisée dans la transformation d'espaces. Découvrez nos services de rénovation de qualité pour améliorer votre espace de vie.",
+  keywords: "rénovation, transformation d'espaces, rénovation intérieure, rénovation extérieure, design d'intérieur, travaux de rénovation, rénovation de maison, AkRenov, aménagement, amélioration de maison, rénovation énergétique, modernisation d'intérieur",
   robots: "index, follow",
   openGraph: {
-    title: "AkRenov - Transformation d&#39;Espaces et Rénovation",
-    description: "AkRenov, entreprise de rénovation spécialisée dans la transformation d&#39;espaces. Découvrez nos services de rénovation de qualité.",
+    title: "AkRenov - Transformation d'Espaces et Rénovation",
+    description: "AkRenov, entreprise de rénovation spécialisée dans la transformation d'espaces. Découvrez nos services de rénovation de qualité.",
     url: "https://www.akrenov.com",
     siteName: "AkRenov",
     images: [
@@ -25,8 +24,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@AkRenov",
-    title: "AkRenov - Transformation d&#39;Espaces et Rénovation",
-    description: "Découvrez les services de rénovation intérieure et extérieure d&#39;AkRenov.",
+    title: "AkRenov - Transformation d'Espaces et Rénovation",
+    description: "Découvrez les services de rénovation intérieure et extérieure d'AkRenov.",
     images: [
       {
         url: "/assets/logo.png",
@@ -47,6 +46,12 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+          integrity="sha384-oS3vJWv+0UjzBcr1RqJ0uUBfghzZp6b1D1wF1jPhEMN1W9ujE6l4uFYS5PfZZT1Q"
+          crossOrigin="anonymous"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/assets/logo.png" type="image/png" />
         <meta httpEquiv="content-language" content="fr" />

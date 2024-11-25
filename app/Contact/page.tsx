@@ -9,10 +9,11 @@ export default function Contact() {
           CONTACT
         </h1>
       </div>
-
+      <div className='w-[90%] mb-10'>
         <Formulaire />
+      </div>
 
-      <div className='absolute text-black bottom-2 font-roboto font-semibold mt-4'>
+      <div className="absolute text-black bottom-2 font-roboto font-semibold mt-4">
         <p>© 2024 AkRenov. Tous droits réservés.</p>
       </div>
     </div>
