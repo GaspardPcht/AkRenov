@@ -35,7 +35,10 @@ export default function Header({
 
   // Use useCallback to memoize the handleScroll function
   const handleScroll = useCallback(() => {
-    if (window.scrollY > lastScrollY) {
+    if (window.scrollY === 0) {
+      // Always show header when at the top of the page
+      setShowHeader(true);
+    } else if (window.scrollY > lastScrollY) {
       // Scrolling down
       setShowHeader(false);
     } else {
