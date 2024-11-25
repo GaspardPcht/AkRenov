@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Header from './components/Header';
 import { SwipeCarousel } from './components/Carousel';
 import ContactInfo from './components/ContactCards';
@@ -10,6 +10,8 @@ import Prestation from './Prestations/page';
 import Contact from './Contact/page';
 
 
+let scrollTimeout: number;
+
 export default function Home() {
   const sectionsRef = {
     QUISOMMESNOUS: useRef<HTMLDivElement>(null),
@@ -17,6 +19,9 @@ export default function Home() {
     PRESTATIONS: useRef<HTMLDivElement>(null),
     CONTACT: useRef<HTMLDivElement>(null),
   };
+
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const scrollToSection = (section: keyof typeof sectionsRef) => {
     const ref = sectionsRef[section].current;
@@ -28,6 +33,38 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      scrollTimeout = window.setTimeout(() => {
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition > 50 && scrollPosition > lastScrollY) {
+          setIsHeaderVisible(false);
+        } else if (scrollPosition < lastScrollY) {
+          setIsHeaderVisible(true);
+        }
+
+        setLastScrollY(scrollPosition);
+      }, 50); // Délai pour limiter la fréquence de mise à jour
+    };
+
+    const handleTouchStart = () => {
+      setIsHeaderVisible(true); // Toujours montrer le header au début du scroll
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('touchstart', handleTouchStart);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('touchstart', handleTouchStart);
+    };
+  }, [lastScrollY]);
+
   return (
     <div>
       <div className="relative h-screen">
@@ -36,7 +73,7 @@ export default function Home() {
           scrollToWork={() => scrollToSection('PORTFOLIO')}
           scrollToPresta={() => scrollToSection('PRESTATIONS')}
           scrollToContact={() => scrollToSection('CONTACT')}
-          className=""
+          className={isHeaderVisible ? 'header-visible' : 'header-hidden'}
         />
         <main className="flex justify-center items-center mt-10 md:text-[14px] lg:text-xl pt-24 md:mb-3 lg:mb-0">
           <ContactInfo location="Plouescat" phone="06 71 11 89 46" email="contact@akrenov.fr" />
