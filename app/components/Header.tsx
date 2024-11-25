@@ -46,7 +46,7 @@ export default function Header({
   }, [lastScrollY]); // Add lastScrollY as a dependency
 
   useEffect(() => {
-    setShowHeader(true); // Always show header on page load
+    setLastScrollY(window.scrollY); // Set initial scroll position
     window.addEventListener('scroll', handleScroll);
 
     // Cleanup the event listener on component unmount
@@ -57,8 +57,8 @@ export default function Header({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4 transition-all duration-300 ${
-        showHeader ? 'opacity-100' : '-top-24 opacity-0'
+      className={`fixed top-0 left-0 right-0 z-10 bg-[#323232] h-24 flex items-center justify-between w-full px-4 transition-opacity duration-300 ${
+        showHeader ? 'opacity-100' : 'opacity-0'
       } ${className}`}
     >
       <div
