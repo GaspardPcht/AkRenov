@@ -53,7 +53,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="icon" href="/assets/logo.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <meta httpEquiv="content-language" content="fr" />
         <title>AkRenov - Transformation d&#39;Espaces et Rénovation</title>
       </head>

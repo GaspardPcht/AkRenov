@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import { SwipeCarousel } from './components/Carousel';
 import ContactInfo from './components/ContactCards';
@@ -8,9 +8,7 @@ import { IoIosArrowDropdown } from 'react-icons/io';
 import Portfolio from './Portfolio/page';
 import Prestation from './Prestations/page';
 import Contact from './Contact/page';
-
-
-let scrollTimeout: number;
+import { debounce } from 'lodash';
 
 export default function Home() {
   const sectionsRef = {
@@ -33,37 +31,34 @@ export default function Home() {
     }
   };
 
+  // handleTouchStart to ensure header is always shown at the beginning of a touch event
+  const handleTouchStart = useCallback(() => {
+    setIsHeaderVisible(true);
+  }, []);
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
+    const handleScroll = debounce(() => {
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > 50 && scrollPosition > lastScrollY) {
+        setIsHeaderVisible(false);
+      } else if (scrollPosition < lastScrollY) {
+        setIsHeaderVisible(true);
       }
 
-      scrollTimeout = window.setTimeout(() => {
-        const scrollPosition = window.scrollY;
-
-        if (scrollPosition > 50 && scrollPosition > lastScrollY) {
-          setIsHeaderVisible(false);
-        } else if (scrollPosition < lastScrollY) {
-          setIsHeaderVisible(true);
-        }
-
-        setLastScrollY(scrollPosition);
-      }, 50); // Délai pour limiter la fréquence de mise à jour
-    };
-
-    const handleTouchStart = () => {
-      setIsHeaderVisible(true); // Toujours montrer le header au début du scroll
-    };
+      setLastScrollY(scrollPosition);
+    }, 100);
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('touchstart', handleTouchStart);
 
+    // Cleanup function to remove event listeners
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('touchstart', handleTouchStart);
+      handleScroll.cancel(); // Cancel the debounce to avoid memory leaks
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, handleTouchStart]);
 
   return (
     <div>

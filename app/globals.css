@@ -12,8 +12,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #EAEAEA;
-    --foreground: #EAEAEA;
+    --background: #EAEAEA; /* Fond sombre */
+    --foreground: #EAEAEA; /* Texte clair */
   }
 }
 
@@ -21,7 +21,20 @@ body {
   color: var(--foreground);
   background-color: var(--background);
   font-family: 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 16px; /* Taille par défaut */
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Réduction de la taille de la police sur les petits écrans */
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px; /* Augmentation de la taille de la police sur les grands écrans */
+  }
 }
 
 /* Conteneur global */
@@ -56,7 +69,13 @@ img, video {
 
 @media (min-width: 768px) {
   .section {
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 5rem 3rem;
   }
 }
 
@@ -76,5 +95,28 @@ img, video {
 @media (min-width: 1024px) {
   .grid-layout {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Focus styles pour l'accessibilité */
+a, button {
+  outline: none;
+}
+
+
+/* Marges responsives */
+.margin-responsive {
+  margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .margin-responsive {
+    margin: 2rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .margin-responsive {
+    margin: 3rem 0;
   }
 }
