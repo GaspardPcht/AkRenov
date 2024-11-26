@@ -133,12 +133,13 @@ const Dots = ({
       {Array.from({ length: buttonCount }).map((_, idx) => {
         return (
           <button
-            key={idx}
-            onClick={() => handleDotClick(idx)}
-            className={`h-3 w-3 rounded-full transition-colors ${
-              imgIndex === idx ? "bg-neutral-800" : "bg-neutral-500"
-            }`}
-          />
+          key={idx}
+          onClick={() => handleDotClick(idx)}
+          aria-label={`Naviguer vers l'image ${idx + 1}`}
+          className={`h-3 w-3 rounded-full transition-colors ${
+            imgIndex === idx ? "bg-neutral-800" : "bg-neutral-500"
+          }`}
+        />
         );
       })}
     </div>
