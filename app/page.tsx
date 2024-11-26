@@ -4,7 +4,6 @@ import Header from './components/Header';
 import { SwipeCarousel } from './components/Carousel';
 import ContactInfo from './components/ContactCards';
 import About from './About/page';
-import { IoIosArrowDropdown } from 'react-icons/io';
 import Portfolio from './Portfolio/page';
 import Prestation from './Prestations/page';
 import Contact from './Contact/page';
@@ -72,15 +71,6 @@ export default function Home() {
         <section className="flex justify-center mb-10">
           <SwipeCarousel />
         </section>
-        <button
-          onClick={() => scrollToSection('QUISOMMESNOUS')}
-          className="flex flex-col justify-center items-center absolute bottom-[5vh] right-[45%] md:right-[50%] transform -translate-x-1/2 cursor-pointer animate-bounce bg-transparent border-none hover:bg-transparent text-[#323232] md:hidden"
-          aria-label="Scroll to About section"
-        >
-          <div className="text-5xl">
-            <IoIosArrowDropdown />
-          </div>
-        </button>
       </div>
 
       {/* Sections */}
