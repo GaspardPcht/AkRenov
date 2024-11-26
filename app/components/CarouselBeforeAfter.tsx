@@ -68,12 +68,14 @@ export const CarouselBeforeAfter = () => {
       {/* Flèches de navigation */}
       <button
         onClick={handlePrev}
+          aria-label="Image Précedente"
         className="absolute left-0 lg:top-1/2 top-[41vh] -translate-y-1/2 text-black hover:text-[#FCD807] transition"
       >
         <FaArrowAltCircleLeft size={35} />
       </button>
       <button
         onClick={handleNext}
+          aria-label="Image suivante"
         className="absolute right-0 top-[41vh] lg:top-1/2 -translate-y-1/2 text-black hover:text-[#FCD807] transition"
       >
         <FaArrowAltCircleRight size={35} />
@@ -99,7 +101,7 @@ const Dots = ({
           key={idx}
           onClick={() => setImgIndex(idx)}
           aria-label={`Naviguer vers l'image ${idx + 1}`}
-          className={`h-3 w-3 rounded-full transition-colors ${
+          className={`h-4 w-4 rounded-full transition-colors ${
             imgIndex === idx ? "bg-neutral-800" : "bg-neutral-500"
           }`}
         />
