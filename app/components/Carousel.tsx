@@ -136,7 +136,7 @@ const Dots = ({
             key={idx}
             onClick={() => handleDotClick(idx)}
             className={`h-3 w-3 rounded-full transition-colors ${
-              imgIndex === idx ? "bg-neutral-50" : "bg-neutral-500"
+              imgIndex === idx ? "bg-neutral-800" : "bg-neutral-500"
             }`}
           />
         );

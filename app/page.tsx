@@ -65,7 +65,7 @@ export default function Home() {
           className={isHeaderVisible ? 'header-visible' : 'header-hidden'}
         />
         <main className="flex justify-center items-center mt-10 md:text-[14px] lg:text-xl pt-24 md:mb-3 lg:mb-0">
-          <ContactInfo location="Plouescat" phone="06 71 11 89 46" email="contact@akrenov.fr" />
+          <ContactInfo location="Plouescat" phone="06 71 11 89 46" email="akrenov@hotmail.com" />
           <ContactInfo location="Louannec" phone="06 95 97 13 20​" email="contact@akrenov.fr" />
         </main>
         <section className="flex justify-center mb-10">

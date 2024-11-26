@@ -28,8 +28,8 @@ const Formulaire: React.FC = () => {
 
   // Mapping des agences aux adresses e-mail
   const agencyEmails: Record<FormData['agence'], string> = {
-    Plouescat: 'gaspardpauchet@gmail.com', // Remplace avec l'adresse e-mail de Plouescat
-    Louannec: 'navislou@gmail.com',  // Remplace avec l'adresse e-mail de Louannec
+    Plouescat: 'akrenov@hotmail.com', // Remplace avec l'adresse e-mail de Plouescat
+    Louannec: 'contact@akrenov.fr',  // Remplace avec l'adresse e-mail de Louannec
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
