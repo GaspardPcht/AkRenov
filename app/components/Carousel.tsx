@@ -136,7 +136,7 @@ const Dots = ({
           key={idx}
           onClick={() => handleDotClick(idx)}
           aria-label={`Naviguer vers l'image ${idx + 1}`}
-          className={`h-3 w-3 rounded-full transition-colors ${
+          className={`h-3 w-3 lg:h-5 lg:w-5 rounded-full transition-colors ${
             imgIndex === idx ? "bg-neutral-800" : "bg-neutral-500"
           }`}
         />
