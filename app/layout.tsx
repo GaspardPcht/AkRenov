@@ -53,7 +53,7 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-          integrity="sha384-oS3vJWv+0UjzBcr1RqJ0uUBfghzZp6b1D1wF1jPhEMN1W9ujE6l4uFYS5PfZZT1Q"
+          integrity="sha384-9Z9AuAj0Xi0z7WFOSgjjow8EnNY9wPNp925TVLlAyWhvZPsf5Ks23Ex0mxIrWJzJ"
           crossOrigin="anonymous"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
