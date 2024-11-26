@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Header from './components/Header';
 import { SwipeCarousel } from './components/Carousel';
 import ContactInfo from './components/ContactCards';
@@ -8,7 +8,6 @@ import { IoIosArrowDropdown } from 'react-icons/io';
 import Portfolio from './Portfolio/page';
 import Prestation from './Prestations/page';
 import Contact from './Contact/page';
-import { debounce } from 'lodash';
 
 export default function Home() {
   const sectionsRef = {
@@ -31,34 +30,30 @@ export default function Home() {
     }
   };
 
-  // handleTouchStart to ensure header is always shown at the beginning of a touch event
-  const handleTouchStart = useCallback(() => {
-    setIsHeaderVisible(true);
-  }, []);
-
   useEffect(() => {
-    const handleScroll = debounce(() => {
+    const handleScroll = () => {
       const scrollPosition = window.scrollY;
 
-      if (scrollPosition > 50 && scrollPosition > lastScrollY) {
+      if (scrollPosition > lastScrollY && scrollPosition > 50) {
+        // Scrolling down, hide the header
         setIsHeaderVisible(false);
       } else if (scrollPosition < lastScrollY) {
+        // Scrolling up, show the header
         setIsHeaderVisible(true);
       }
 
       setLastScrollY(scrollPosition);
-    }, 100);
+    };
+
+    // Set initial scroll position
+    setLastScrollY(window.scrollY);
 
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('touchstart', handleTouchStart);
 
-    // Cleanup function to remove event listeners
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('touchstart', handleTouchStart);
-      handleScroll.cancel(); // Cancel the debounce to avoid memory leaks
     };
-  }, [lastScrollY, handleTouchStart]);
+  }, [lastScrollY]);
 
   return (
     <div>
